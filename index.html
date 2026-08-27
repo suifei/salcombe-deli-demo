@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Salcombe Delicatessen · 52 Fore Street</title>
+  <meta name="description" content="Sandwiches, salads and pasties on Fore Street, Salcombe. Open Monday–Sunday 10.00am–4.00pm, closed Wednesday. Call 01548 842332.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f2e4cc;
+      --paper-deep: #e6d0ad;
+      --cream: #faf4e8;
+      --ink: #2a1c12;
+      --ink-soft: #5a4332;
+      --muted: #7a604c;
+      --tomato: #b33a24;
+      --tomato-deep: #8d2b1a;
+      --mustard: #c49a2a;
+      --leaf: #3f4f32;
+      --twine: #8a6844;
+      --wood: #241910;
+      --rule: rgba(179, 58, 36, 0.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Newsreader, "Iowan Old Style", Palatino, Georgia, serif;
+      font-size: 1.0625rem;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--paper);
+      background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(196, 154, 42, 0.08), transparent 42%),
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(80, 50, 20, 0.018) 3px, rgba(80, 50, 20, 0.018) 4px);
+    }
+    img, svg { display: block; }
+    a { color: var(--tomato); text-underline-offset: 0.16em; }
+    a:hover { color: var(--tomato-deep); }
+
+    .wrap {
+      width: min(40rem, calc(100% - 1.6rem));
+      margin-inline: auto;
+    }
+    .wrap-wide {
+      width: min(52rem, calc(100% - 1.6rem));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--tomato);
+    }
+
+    header.site {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(242, 228, 204, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(42, 28, 18, 0.1);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      min-height: 3.4rem;
+      width: min(52rem, calc(100% - 1.6rem));
+      margin-inline: auto;
+    }
+    .nav-mark {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 700;
+      font-size: 1.22rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.55rem 0.85rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+    .nav-links a:hover { color: var(--tomato); }
+    .nav-links a.order {
+      color: var(--cream);
+      background: var(--tomato);
+      padding: 0.38rem 0.78rem;
+      border-radius: 2px;
+    }
+    .nav-links a.order:hover { background: var(--tomato-deep); color: var(--cream); }
+
+    .hero {
+      padding: 2.4rem 0 2.2rem;
+    }
+    .hero-card {
+      background: var(--cream);
+      border: 1px solid rgba(42, 28, 18, 0.1);
+      box-shadow: 0 10px 28px rgba(42, 28, 18, 0.08);
+      padding: 1.7rem 1.2rem 1.5rem;
+      text-align: center;
+    }
+    .stamp {
+      display: inline-block;
+      border: 2px solid var(--tomato);
+      color: var(--tomato);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.55rem;
+      transform: rotate(-3deg);
+      margin-bottom: 0.95rem;
+    }
+    .hero h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(2.35rem, 11vw, 4rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      display: block;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 0.62em;
+      color: var(--tomato);
+      margin-top: 0.15rem;
+    }
+    .hero .street {
+      margin-top: 0.95rem;
+      font-size: 1.12rem;
+      color: var(--ink-soft);
+    }
+    .hero address {
+      font-style: normal;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.15rem;
+    }
+    .hours-ticket {
+      margin-top: 1.35rem;
+      padding-top: 1.1rem;
+      border-top: 1px dashed rgba(42, 28, 18, 0.18);
+    }
+    .hours-ticket strong {
+      display: block;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.28rem;
+      font-weight: 600;
+    }
+    .hours-ticket .closed {
+      color: var(--tomato);
+      font-weight: 600;
+    }
+    .hours-ticket .note {
+      margin-top: 0.4rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem;
+      margin-top: 1.2rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: 0.55rem 1rem;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 2px;
+    }
+    .btn-solid {
+      background: var(--tomato);
+      color: var(--cream);
+    }
+    .btn-solid:hover { background: var(--tomato-deep); color: var(--cream); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid rgba(42, 28, 18, 0.22);
+    }
+    .btn-ghost:hover { border-color: var(--tomato); color: var(--tomato); }
+
+    section { padding: 2.6rem 0; }
+    section h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.75rem, 6vw, 2.3rem);
+      line-height: 1.12;
+      margin: 0.35rem 0 0.85rem;
+    }
+
+    .order { background: var(--paper-deep); }
+    .order .lede { color: var(--ink-soft); margin-bottom: 1.15rem; }
+    .order-cards {
+      display: grid;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .order-cards { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      background: var(--cream);
+      border: 1px solid rgba(42, 28, 18, 0.1);
+      padding: 1.05rem 1rem 1.1rem;
+    }
+    .card h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+    .card p { margin-top: 0.4rem; color: var(--ink-soft); }
+    .card .btn { margin-top: 0.85rem; width: 100%; }
+    .sellout {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .pad {
+      background: var(--cream);
+      border: 1px solid rgba(42, 28, 18, 0.1);
+      box-shadow: 0 8px 22px rgba(42, 28, 18, 0.06);
+      padding: 1rem 0.95rem 1.15rem;
+      position: relative;
+    }
+    .pad::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 1.55rem;
+      width: 2px;
+      background: rgba(179, 58, 36, 0.35);
+    }
+    .pad-head, .menu-row, .kids {
+      padding-left: 1.55rem;
+    }
+    .pad-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 0.55rem;
+      margin-bottom: 0.25rem;
+      border-bottom: 1px solid rgba(42, 28, 18, 0.12);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .menu-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.35rem 0.75rem;
+      padding: 0.62rem 0 0.62rem 1.55rem;
+      border-bottom: 1px dotted rgba(42, 28, 18, 0.16);
+    }
+    .menu-row:last-of-type { border-bottom: 0; }
+    .menu-row dt {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.14rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .menu-row dd.price {
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      white-space: nowrap;
+      color: var(--ink);
+    }
+    .menu-row dd.extra {
+      grid-column: 1 / -1;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: -0.15rem;
+    }
+    .bread-note, .gf-note {
+      margin-top: 0.95rem;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+    .kids {
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed rgba(42, 28, 18, 0.18);
+    }
+    .kids strong {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.14rem;
+    }
+
+    .salads { background: var(--paper-deep); }
+    .salad-grid {
+      display: grid;
+      gap: 0.7rem;
+    }
+    @media (min-width: 640px) {
+      .salad-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .salad {
+      background: var(--cream);
+      border: 1px solid rgba(42, 28, 18, 0.1);
+      padding: 0.95rem 1rem;
+    }
+    .salad h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.28rem;
+      font-weight: 600;
+    }
+    .salad .price {
+      color: var(--tomato);
+      font-weight: 600;
+      margin: 0.15rem 0 0.35rem;
+    }
+    .salad p { font-size: 0.92rem; color: var(--ink-soft); }
+
+    .pasty-list {
+      display: grid;
+      gap: 0.55rem;
+    }
+    .pasty {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--cream);
+      border: 1px solid rgba(42, 28, 18, 0.1);
+      padding: 0.8rem 0.95rem;
+    }
+    .pasty span:first-child {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.18rem;
+      font-weight: 600;
+    }
+    .pasty .ask { display: block; font-size: 0.85rem; color: var(--muted); font-family: Newsreader, Georgia, serif; font-weight: 400; }
+
+    .hampers { background: var(--paper-deep); }
+    .hamper-grid { display: grid; gap: 0.7rem; }
+    @media (min-width: 720px) {
+      .hamper-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .hamper {
+      background: var(--cream);
+      border: 1px solid rgba(42, 28, 18, 0.1);
+      padding: 1rem;
+    }
+    .hamper h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.22rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .hamper .price { color: var(--tomato); font-weight: 600; margin: 0.25rem 0 0.5rem; }
+    .hamper ul { padding-left: 1.05rem; color: var(--ink-soft); font-size: 0.92rem; }
+    .hamper li { margin: 0.2rem 0; }
+
+    .find {
+      background: var(--wood);
+      color: #f3e6d0;
+    }
+    .find h2 { color: #faf4e8; }
+    .find .eyebrow { color: #e0a090; }
+    .find a { color: #f0c4b4; }
+    .find a:hover { color: #fff; }
+    .find address {
+      font-style: normal;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.4rem;
+      line-height: 1.25;
+      margin: 0.2rem 0 1rem;
+    }
+    .find dl { display: grid; gap: 0.85rem; }
+    .find dt {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #d4b48a;
+    }
+    .find dd { margin-top: 0.15rem; }
+    .find .rating {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(243, 230, 208, 0.14);
+      color: #c9b49a;
+      font-size: 0.95rem;
+    }
+    .find-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.25rem;
+    }
+    .find .btn-solid { background: var(--tomato); }
+    .find .btn-ghost {
+      border-color: rgba(243, 230, 208, 0.28);
+      color: #f3e6d0;
+    }
+    .find .btn-ghost:hover { border-color: #f0c4b4; color: #fff; }
+
+    footer.site {
+      background: #1a120c;
+      color: #9a8470;
+      padding: 1.25rem 0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (min-width: 720px) {
+      .hero-card { padding: 2.2rem 2rem 1.9rem; }
+      .pad { padding: 1.25rem 1.35rem 1.4rem; }
+      .pad::before { left: 2rem; }
+      .pad-head, .menu-row, .kids { padding-left: 2rem; }
+      .menu-row { padding-left: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-mark" href="#top">The Deli</a>
+      <ul class="nav-links">
+        <li><a href="#sandwiches">Sandwiches</a></li>
+        <li><a href="#salads">Salads</a></li>
+        <li><a href="#find">Find us</a></li>
+        <li><a class="order" href="tel:+441548842332">Call</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="The Salcombe Delicatessen">
+      <div class="wrap">
+        <div class="hero-card">
+          <p class="stamp">Fore Street · Salcombe</p>
+          <h1>The Salcombe <em>Delicatessen</em></h1>
+          <p class="street">On Fore Street, in the heart of Salcombe.</p>
+          <address>52 Fore Street, Salcombe, Devon TQ8 8JE</address>
+          <div class="hours-ticket">
+            <strong>Monday–Sunday 10.00am–4.00pm</strong>
+            <p class="closed">Closed Wednesday</p>
+            <p class="note">Times change through the year — please call before you set out.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="tel:+441548842332">01548 842332</a>
+            <a class="btn btn-ghost" href="mailto:info@salcombedeli.co.uk">info@salcombedeli.co.uk</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="order" id="order">
+      <div class="wrap">
+        <p class="eyebrow">How to order</p>
+        <h2>Email the day before, or ring us while we are open</h2>
+        <p class="lede">We make the sandwiches, baguettes and salads to order. We source as much as we can from the South West.</p>
+        <div class="order-cards">
+          <article class="card">
+            <h3>Email — 24 hours</h3>
+            <p>A minimum of 24 hours’ notice for sandwiches, baguettes and salads. Write what you would like and when you will collect.</p>
+            <a class="btn btn-solid" href="mailto:info@salcombedeli.co.uk?subject=Order%20for%20The%20Salcombe%20Delicatessen">Email an order</a>
+          </article>
+          <article class="card">
+            <h3>Missed the deadline?</h3>
+            <p>Call during opening hours. If you need crab or prawns for tomorrow, it is worth ordering today — they sell out.</p>
+            <a class="btn btn-ghost" href="tel:+441548842332">Call 01548 842332</a>
+          </article>
+        </div>
+        <p class="sellout">Crab and prawns go quickly. We recommend a pre-order for the next day if you want to be sure.</p>
+      </div>
+    </section>
+
+    <section id="sandwiches">
+      <div class="wrap">
+        <p class="eyebrow">From the counter</p>
+        <h2>Sandwiches &amp; baguettes</h2>
+        <p class="bread-note">Granary or white bread, or a white or multigrain baguette. Prices are sandwich / baguette.</p>
+        <div class="pad" aria-label="Sandwich menu">
+          <div class="pad-head">
+            <span>Made to order</span>
+            <span>Sandwich / baguette</span>
+          </div>
+          <dl>
+            <div class="menu-row">
+              <dt>Devon Ham &amp; Salad</dt>
+              <dd class="price">£6.25 / 7.10</dd>
+              <dd class="extra">English mustard or coarse grain mustard</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Mozzarella, Tomato &amp; Pesto</dt>
+              <dd class="price">£6.20 / 6.95</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Devon Ham &amp; Cheddar</dt>
+              <dd class="price">£6.50 / 7.20</dd>
+              <dd class="extra">Mango, spicy tomato or onion chutney</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Goats Cheese &amp; Chilli Jam</dt>
+              <dd class="price">£6.95 / 7.75</dd>
+              <dd class="extra">With leaves</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Devon Ham, Brie, Cranberry &amp; Avocado</dt>
+              <dd class="price">£7.25 / 8.15</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Vegan Ploughman’s</dt>
+              <dd class="price">£6.30 / 7.15</dd>
+              <dd class="extra">Vegan cheddar, salad and onion chutney</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Coronation Chicken</dt>
+              <dd class="price">£6.80 / 7.50</dd>
+              <dd class="extra">Leaves and mango chutney</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Vegan Cheddar, Tomato, Avocado &amp; Leaves</dt>
+              <dd class="price">£6.50 / 7.20</dd>
+              <dd class="extra">Vegan mayonnaise</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Chicken Caesar</dt>
+              <dd class="price">£6.80 / 7.50</dd>
+              <dd class="extra">Parmesan shavings</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Avocado, Almond Butter, Cucumber &amp; Leaves</dt>
+              <dd class="price">£6.95 / 7.75</dd>
+              <dd class="extra">Mango chutney</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Chicken &amp; Chorizo</dt>
+              <dd class="price">£7.15 / 8.00</dd>
+              <dd class="extra">Leaves and garlic mayonnaise</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Egg Mayonnaise</dt>
+              <dd class="price">£6.00 / 6.85</dd>
+              <dd class="extra">Cress or tomato</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Chorizo, Brie &amp; Chilli Jam</dt>
+              <dd class="price">£7.25 / 8.15</dd>
+              <dd class="extra">With leaves</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Tuna Mayonnaise</dt>
+              <dd class="price">£6.50 / 7.20</dd>
+              <dd class="extra">Cucumber or sweetcorn</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Milano Salami, Emmental</dt>
+              <dd class="price">£6.95 / 7.75</dd>
+              <dd class="extra">Leaves and English mustard</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Prawns in Marie Rose</dt>
+              <dd class="price">£7.80 / 8.50</dd>
+              <dd class="extra">With lettuce</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Ploughman’s</dt>
+              <dd class="price">£6.30 / 7.15</dd>
+              <dd class="extra">Cheddar, salad and onion chutney</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Crab</dt>
+              <dd class="price">£14.75 / 15.75</dd>
+              <dd class="extra">Handpicked pure white Devon crab, lemon and black pepper</dd>
+            </div>
+            <div class="menu-row">
+              <dt>Brie &amp; Cranberry or Fig</dt>
+              <dd class="price">£6.30 / 7.15</dd>
+              <dd class="extra">With leaves</dd>
+            </div>
+            <div class="menu-row">
+              <dt>The Salcombe Deli</dt>
+              <dd class="price">£8.00 / 8.95</dd>
+              <dd class="extra">Milano salami, Emmental, gherkins, lettuce, tomato, mayonnaise and coarse grain mustard</dd>
+            </div>
+          </dl>
+          <p class="kids"><strong>Children’s sandwiches £4.25</strong> — ham, cheese, tuna, or ham and cheese.</p>
+        </div>
+        <p class="gf-note">No gluten-free bread on the made-to-order sandwiches. We do have gluten-free pastries — ask what is in that day.</p>
+      </div>
+    </section>
+
+    <section class="salads" id="salads">
+      <div class="wrap">
+        <p class="eyebrow">Salads</p>
+        <h2>Made fresh, same notice</h2>
+        <div class="salad-grid">
+          <article class="salad">
+            <h3>Chicken Caesar</h3>
+            <p class="price">£8.50</p>
+            <p>Leaves, Parmesan shavings and croutons. Contains gluten and milk.</p>
+          </article>
+          <article class="salad">
+            <h3>Greek</h3>
+            <p class="price">£8.75</p>
+            <p>Mixed green and Kalamata olives, sun-dried tomatoes, feta, leaves, cucumber, onion and a balsamic vinegar dressing.</p>
+          </article>
+          <article class="salad">
+            <h3>Classic</h3>
+            <p class="price">£5.95</p>
+            <p>Leaves, cucumber, cherry tomatoes, croutons and a dressing. Contains gluten and milk.</p>
+          </article>
+          <article class="salad">
+            <h3>Crab</h3>
+            <p class="price">£16.75</p>
+            <p>Handpicked pure white Devon crab, with leaves, cucumber, cherry tomatoes, avocado and a drizzle of lemon and black pepper.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pasties">
+      <div class="wrap">
+        <p class="eyebrow">Pasties</p>
+        <h2>Baked here</h2>
+        <div class="pasty-list">
+          <p class="pasty"><span>Traditional Steak</span><span>£5.35</span></p>
+          <p class="pasty"><span>Beef and Stilton</span><span>£5.35</span></p>
+          <p class="pasty"><span>Cheese and Onion</span><span>£5.35</span></p>
+          <p class="pasty"><span>Vegan<span class="ask">Ask for today’s flavour</span></span><span>£5.50</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="hampers" id="hampers">
+      <div class="wrap-wide">
+        <p class="eyebrow">Hampers</p>
+        <h2>Packed on Fore Street</h2>
+        <div class="hamper-grid">
+          <article class="hamper">
+            <h3>Little Sweet Salcombe</h3>
+            <p class="price">£22.99</p>
+            <ul>
+              <li>The Bay Tree jam or marmalade, 340g</li>
+              <li>Farmhouse Biscuits shortbread, 200g</li>
+              <li>Kernow Chocolate bar, 100g</li>
+            </ul>
+          </article>
+          <article class="hamper">
+            <h3>Salcombe Sweet Treats</h3>
+            <p class="price">£34.99</p>
+            <ul>
+              <li>The Bay Tree Fayre jam or marmalade, 340g</li>
+              <li>Stone’s Honey, 227g</li>
+              <li>Kernow Chocolate bar, 100g</li>
+              <li>Luscombe drink, 32cl</li>
+              <li>Farmhouse Biscuits shortbread, 200g</li>
+            </ul>
+          </article>
+          <article class="hamper">
+            <h3>Salcombe Savoury Selection</h3>
+            <p class="price">£36.99</p>
+            <ul>
+              <li>The Bay Tree, about 300g</li>
+              <li>South Devon Chilli Farm chilli jam, 250g</li>
+              <li>South Devon Chilli Farm chilli chutney, 220g</li>
+              <li>Miller’s Harvest crackers, 125g</li>
+              <li>Mr Filbert’s nuts, 110g</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="find" id="find">
+      <div class="wrap">
+        <p class="eyebrow">Find us</p>
+        <h2>52 Fore Street</h2>
+        <address>52 Fore Street<br>Salcombe, Devon<br>TQ8 8JE</address>
+        <dl>
+          <div>
+            <dt>Telephone</dt>
+            <dd><a href="tel:+441548842332">01548 842332</a></dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:info@salcombedeli.co.uk">info@salcombedeli.co.uk</a></dd>
+          </div>
+          <div>
+            <dt>Hours</dt>
+            <dd>Monday–Sunday 10.00am–4.00pm, closed Wednesday. Times change — please call.</dd>
+          </div>
+          <div>
+            <dt>Map</dt>
+            <dd><a href="https://www.openstreetmap.org/search?query=52%20Fore%20Street%20Salcombe%20TQ8%208JE">Open in OpenStreetMap</a></dd>
+          </div>
+          <div>
+            <dt>Instagram</dt>
+            <dd><a href="https://www.instagram.com/thesalcombedeli/">@thesalcombedeli</a></dd>
+          </div>
+        </dl>
+        <div class="find-actions">
+          <a class="btn btn-solid" href="tel:+441548842332">Call the deli</a>
+          <a class="btn btn-ghost" href="mailto:info@salcombedeli.co.uk">Send an email</a>
+        </div>
+        <p class="rating">On Maps, people rate us about 4.7 from about 93 reviews.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">The Salcombe Delicatessen · Salcombe</div>
+  </footer>
+</body>
+</html>
